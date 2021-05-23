@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%-include('layout/head.ejs')%>
+<body>
+    <%-include('layout/head.ejs')%>
+    <main>
+        <%results.forEach(result=>{%>
+            <div>
+                <p>Title: <%=result.title%></p>
+                <p>Company: <%=result.company%></p>
+                <p>Location: <%=result.location%></p>
+                <p><%=result.url%></p>
+
+                <form action="/addJob" method="POST">
+                <input type="hidden" name="title" value="<%=result.title%>">
+                <input type="hidden" name="company" value="<%=result.company%>">
+                <input type="hidden" name="location" value="<%=result.location%>">
+                <input type="hidden" name="url" value="<%=result.url%>">
+                <input type="submit" value="Add To My List">
+                </form>
+            </div>
+      <%  })%>
+    </main>
+    
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%-include('layout/head.ejs')%>
+<body>
+    <%-include('layout/header.ejs')%>
+    <main>
+        <%details.forEach(detail=>{%>
+            <div>
+            <p>Title: <%=detail.title%></p>
+            <p>Company: <%=detail.company%></p>
+            <p>Location: <%=detail.location%></p>
+            <p><%=detail.url%></p>
+            <p><%=detail.description%></p>
+
+
+        </div>
+
+        <form action="/details/<%=detail.id%>?_method=PUT" method="POST" >
+        <input type="text" name="title" value="<%=detail.title%>">
+        <input type="text" name="company" value="<%=detail.company%>">
+        <input type="text" name="location" value="<%=detail.location%>">
+        <input type="text" name="url" value="<%=detail.url%>">
+        <input type="text" name="description" value="<%=detail.description%>">
+        <input type="submit" value="save">
+        </form>
+        <%})%>
+    </main>
+    
+</body>
+</html>

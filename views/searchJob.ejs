@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%-include('layout/head.ejs')%>
+<body>
+    <%-include('layout/header.ejs')%>
+    
+    <form action="/searchResult" method="GET">
+    <label for="description">Desctription</label>
+    <input type="text" name="description">
+    <input type="submit" value="Search">
+    </form>
+</body>
+</html>

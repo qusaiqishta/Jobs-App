@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%-include('layout/head.ejs')%>
+<body>
+    <%-include('layout/header.ejs')%>
+    <main>
+        <%if(jobs.length>0){%>
+        <%jobs.forEach(job=>{%>
+            <div>
+            <p>Title: <%=job.title%></p>
+            <p>Company: <%=job.company%></p>
+            <p>Location: <%=job.location%></p>
+            <p><%=job.url%></p>
+
+            <a href="/details/<%=job.id%>">View Details</a>
+        </div>
+        <%})%>
+
+   <% }else{%>
+    <h1>No Saved Jobs</h1>
+
+   <% }%>
+    </main>
+    
+</body>
+</html>

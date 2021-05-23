@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<%-include('layout/head.ejs')%>
+<body>
+    <%-include('layout/header.ejs')%>
+    <h1>ALL USA Jobs</h1>
+    <main>
+        <%jobs.forEach(job=>{%>
+            <div>
+            <p>Title: <%=job.title%></p>
+            <p>Company: <%=job.company%></p>
+            <p>Location: <%=job.location%></p>
+            <p><%=job.url%></p>
+        </div>
+        <%})%>
+    </main>
+    
+</body>
+</html>
