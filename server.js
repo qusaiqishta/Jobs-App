@@ -42,7 +42,9 @@ function homeRoute(req, res) {
 
 function searchJob(req, res) {
     
-        res.render('searchJob')
+        res.redirect('/searchResult')
+    
+        
     
 }
 
