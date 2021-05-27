@@ -4,26 +4,29 @@
 <body>
     <%-include('layout/header.ejs')%>
     <main>
-        <%details.forEach(detail=>{%>
+     
             <div>
-            <p>Title: <%=detail.title%></p>
-            <p>Company: <%=detail.company%></p>
-            <p>Location: <%=detail.location%></p>
-            <p><%=detail.url%></p>
-            <p><%=detail.description%></p>
+            <p>Title: <%=details.title%></p>
+            <p>Company: <%=details.company%></p>
+            <p>Location: <%=details.location%></p>
+            <p><%=details.url%></p>
+            <p><%=details.description%></p>
 
 
-        </div>
-
-        <form action="/details/<%=detail.id%>?_method=PUT" method="POST" >
-        <input type="text" name="title" value="<%=detail.title%>">
-        <input type="text" name="company" value="<%=detail.company%>">
-        <input type="text" name="location" value="<%=detail.location%>">
-        <input type="text" name="url" value="<%=detail.url%>">
-        <input type="text" name="description" value="<%=detail.description%>">
-        <input type="submit" value="save">
-        </form>
-        <%})%>
+            
+            <form action="/details/<%=details.id%>?_method=PUT" method="POST" >
+        <input type="text" name="title" value="<%=details.title%>">
+        <input type="text" name="company" value="<%=details.company%>">
+        <input type="text" name="location" value="<%=details.location%>">
+        <input type="text" name="url" value="<%=details.url%>">
+        <input type="text" name="description" value="<%=details.description%>">
+        <input style="transform:translate(-30px,60px)" type="submit" value="save">
+    </form>
+    <form action="/details/<%=details.id%>?_method=DELETE" method="POST">
+    <input style="transform: translate(-70px);" type="submit" value="Delete">
+    </form>
+    
+</div>
     </main>
     
 </body>

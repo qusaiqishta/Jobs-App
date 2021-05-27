@@ -2,7 +2,8 @@
 <html lang="en">
     <%-include('layout/head.ejs')%>
 <body>
-    <%-include('layout/head.ejs')%>
+    <%-include('layout/header.ejs')%>
+    <h1>Search Results</h1>
     <main>
         <%results.forEach(result=>{%>
             <div>
@@ -16,7 +17,7 @@
                 <input type="hidden" name="company" value="<%=result.company%>">
                 <input type="hidden" name="location" value="<%=result.location%>">
                 <input type="hidden" name="url" value="<%=result.url%>">
-                <input type="submit" value="Add To My List">
+                <input style="width: 80%;" type="submit" value="Add To My List">
                 </form>
             </div>
       <%  })%>

@@ -23,7 +23,7 @@ const client = new pg.Client(DATABASE_URL);
 
 app.get('/', homeRoute);
 app.get('/search', searchJob);
-app.get('/searchResult', searchResult)
+app.post('/searchResult', searchResult)
 app.post('/addJob', addJob);
 app.get('/myJobs', myJobs)
 app.get('/details/:id', jobDetails)
@@ -42,14 +42,14 @@ function homeRoute(req, res) {
 
 function searchJob(req, res) {
     
-        res.redirect('/searchResult')
+        res.render('searchJob')
     
         
     
 }
 
 function searchResult(req, res) {
-    const description = req.query;
+    const description = req.body.description;
     const url = `https://jobs.github.com/positions.json?description=${description}&location=usa`;
     superagent.get(url).then(result => {
         const ResultArray = result.body.map(object => new Job(object));
@@ -92,6 +92,7 @@ function jobDetails(req, res) {
 
 function updateJob(req, res) {
     const jobId = req.params.id;
+    const sql='UPDATE jobs SET title=$1, company=$2, location=$3, url=$4, description=$5 WHERE id=$6;';
     const { title, company, location, url, description } = req.body;
     const safeValues = [title, company, location, url, description, jobId];
     client.query(sql, safeValues).then(() => {
@@ -102,8 +103,8 @@ function updateJob(req, res) {
 function deleteJob(req, res) {
     const jobId = req.params.id;
     const sql = 'DELETE FROM jobs WHERE id=$1;';
-    const safeValue = [jobId];
-    client.query(sql, safevalue).then(() => {
+    const safeValues= [jobId];
+    client.query(sql, safeValues).then(() => {
         res.redirect('/myJobs')
     })
 }
